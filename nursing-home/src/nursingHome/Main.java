@@ -13,7 +13,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class Main {
 	public static void main(String[] args) throws SQLException {
-		String connectionUrl = "jdbc:sqlserver://SD2326\\SQLEXPRESS;databaseName=nursingHome;integratedSecurity=true";
+		String connectionUrl = "jdbc:sqlserver://GL020\\SQLEXPRESS;databaseName=nursingHome;integratedSecurity=true";
 
 		try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
 			String SQL = "SELECT TOP (1000) [elder_id]\r\n"

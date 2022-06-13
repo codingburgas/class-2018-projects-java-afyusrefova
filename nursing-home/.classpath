@@ -6,7 +6,11 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/afyusrefova18/Documents/enu/mssql-jdbc-9.4.1.jre16.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/afyusrefova18/Documents/sqljdbc_9.4.1.0_enu/sqljdbc_9.4/enu/mssql-jdbc-9.4.1.jre16.jar">
+>>>>>>> e9e820603cc666897c478862b97d02af25f4a969
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

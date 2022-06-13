@@ -1,41 +1,88 @@
 package nursingHome;
 
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.io.FileDescriptor;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
-import java.sql.Connection;
-import static java.nio.charset.StandardCharsets.UTF_8;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
-public class Main {
-	public static void main(String[] args) throws SQLException {
-<<<<<<< HEAD
-		String connectionUrl = "jdbc:sqlserver://GL020\\SQLEXPRESS;databaseName=nursingHome;integratedSecurity=true";
-=======
-		String connectionUrl = "jdbc:sqlserver://SD2316\\SQLEXPRESS;databaseName=nursingHome;integratedSecurity=true";
->>>>>>> e9e820603cc666897c478862b97d02af25f4a969
+import loginSystem.Register;
 
-		try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
-			String SQL = "SELECT TOP (1000) [elder_id]\r\n"
-					+ "      ,[dateOfBirth]\r\n"
-					+ "      ,[first_name]\r\n"
-					+ "      ,[last_name]\r\n"
-					+ "  FROM [nursingHome].[dbo].[Elders]";
-			ResultSet rs = stmt.executeQuery(SQL);
-			String insert = "INSERT INTO Users (user_id,first_name,last_name, email, phone, dateOfBirth, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
-			
-// Iterate through the data in the result set and display it.
-			while (rs.next()) {
-				System.out.println(rs.getString("first_name") + " " + rs.getString("last_name"));
+import loginSystem.UserLogin;
+
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Main extends JFrame {
+	
+	private static final long serialVersionUID = 1L;
+	private JTextField textField;
+	private JPasswordField passwordField;
+	private JButton btnNewButton;
+	private JLabel label;
+	private JPanel contentPane;
+
+	public static void main(String[] args) {
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Main frame = new Main();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-		}
-// Handle any errors that may have occurred.
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
+		});
+		
 	}
+
+	
+	public Main() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(300, 90, 1014, 597);
+		setResizable(false);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+
+		JLabel lblNewLabel = new JLabel("Hi!");
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 46));
+		lblNewLabel.setBounds(423, 13, 273, 93);
+		contentPane.add(lblNewLabel);
+		
+		btnNewButton = new JButton("Login");
+        btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 26));
+        btnNewButton.setBounds(370, 200, 162, 73);
+        btnNewButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+            	UserLogin log = new UserLogin();
+            	log.setTitle("Login");
+            	log.setVisible(true);
+            }
+        });
+        contentPane.add(btnNewButton);
+        
+        btnNewButton = new JButton("Register");
+        btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 26));
+        btnNewButton.setBounds(370, 300, 162, 73);
+        btnNewButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+            	Register frame = new Register();
+            	frame.setTitle("Register");
+                frame.setVisible(true);
+            }
+        });
+        contentPane.add(btnNewButton);
+	}
+
 }
